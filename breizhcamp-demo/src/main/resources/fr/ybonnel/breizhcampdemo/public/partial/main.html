@@ -1,14 +1,14 @@
 <div class="row">
     <div class="span12 relative">
         <span></span>
-        <a id="addHello" class="btn btn-success right-btn" href="#/new">Add a hello</a>
+        <a id="addHello" class="btn btn-success right-btn" href="#/new">Add a galette</a>
     </div>
 </div>
 
 
 <div class="row">
     <div class="span12">
-        <table id="hellos" class="table table-bordered table-hover">
+        <table id="galettes" class="table table-bordered table-hover">
             <thead>
             <tr>
                 <th class="name">Name</th>
@@ -17,22 +17,22 @@
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="hello in hellos">
-                <td>{{hello.name}}</td>
-                <td class="edit"><a href="#/edit/{{hello.id}}" class="icon-edit" role="button"></a></td>
+            <tr ng-repeat="galette in galettes">
+                <td>{{galette.name}}</td>
+                <td class="edit"><a href="#/edit/{{galette.id}}" class="icon-edit" role="button"></a></td>
                 <td class="remove">
-                    <a href="#delete{{hello.id}}" role="button" data-toggle="modal" class="icon-remove"></a>
-                    <div id="delete{{hello.id}}" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="modelLabel{{hello.id}}" aria-hidden="true">
+                    <a href="#delete{{galette.id}}" role="button" data-toggle="modal" class="icon-remove"></a>
+                    <div id="delete{{galette.id}}" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="modelLabel{{galette.id}}" aria-hidden="true">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                            <h3 id="modelLabel{{hello.id}}">Remove {{hello.name}}</h3>
+                            <h3 id="modelLabel{{galette.id}}">Remove {{galette.name}}</h3>
                         </div>
                         <div class="modal-body">
-                            <p>Warning, the hello {{hello.name}} will be removed definitively</p>
+                            <p>Warning, the galette {{galette.name}} will be removed definitively</p>
                         </div>
                         <div class="modal-footer">
                             <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
-                            <button id="remove" class="btn btn-danger" ng-click="delete(hello)">Remove</button>
+                            <button id="remove" class="btn btn-danger" ng-click="delete(galette)">Remove</button>
                         </div>
                     </div>
                 </td>

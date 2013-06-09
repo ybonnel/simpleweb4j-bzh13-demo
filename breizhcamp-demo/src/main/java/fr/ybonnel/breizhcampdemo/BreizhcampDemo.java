@@ -19,7 +19,7 @@ public class BreizhcampDemo {
         setPublicResourcesPath("/fr/ybonnel/breizhcampdemo/public");
 
         // Declare the route "/hello" for GET method whith no param in request payload.
-        resource(new HelloResource("hello"));
+        resource(new GaletteResource("galette"));
 
         // Start the server.
         start(waitStop);

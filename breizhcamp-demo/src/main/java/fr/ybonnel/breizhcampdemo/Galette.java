@@ -1,10 +1,12 @@
 package fr.ybonnel.breizhcampdemo;
 
-public class Hello {
+public class Galette {
 
     private Long id;
 
     private String name;
+
+    private Double price;
 
     public Long getId() {
         return id;
@@ -22,4 +24,11 @@ public class Hello {
         this.name = name;
     }
 
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
 }

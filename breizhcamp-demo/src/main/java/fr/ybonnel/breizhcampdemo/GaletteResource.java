@@ -6,36 +6,36 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-public class HelloResource extends RestResource<Hello> {
+public class GaletteResource extends RestResource<Galette> {
 
-    protected static Map<Long, Hello> entities = new HashMap<>();
+    protected static Map<Long, Galette> entities = new HashMap<>();
 
-    public HelloResource(String route) {
-        super(route, Hello.class);
+    public GaletteResource(String route) {
+        super(route, Galette.class);
     }
 
     @Override
-    public Hello getById(String id) {
+    public Galette getById(String id) {
         return entities.get(Long.parseLong(id));
     }
 
     @Override
-    public Collection<Hello> getAll() {
+    public Collection<Galette> getAll() {
         return entities.values();
     }
 
     @Override
-    public void update(String id, Hello resource) {
+    public void update(String id, Galette resource) {
         resource.setId(Long.parseLong(id));
         entities.put(Long.parseLong(id), resource);
     }
 
     @Override
-    public Hello create(Hello resource) {
+    public Galette create(Galette resource) {
         long maxId = 0;
-        for (Hello hello : getAll()) {
-            if (hello.getId() > maxId) {
-                maxId = hello.getId();
+        for (Galette galette : getAll()) {
+            if (galette.getId() > maxId) {
+                maxId = galette.getId();
             }
         }
         maxId++;

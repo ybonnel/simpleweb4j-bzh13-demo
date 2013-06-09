@@ -21,7 +21,7 @@ public class BreizhcampDemoTest extends SimpleWeb4jTest {
     @Before
     public void setup() {
         BreizhcampDemo.startServer(getPort(), false);
-        HelloResource.entities.clear();
+        GaletteResource.entities.clear();
     }
 
     @After
@@ -30,56 +30,59 @@ public class BreizhcampDemoTest extends SimpleWeb4jTest {
     }
 
     @Test
-    public void should_return_no_hello() {
-        List<Hello> hellos = new Gson().fromJson(HttpRequest.get(defaultUrl() + "/hello").body(), new TypeToken<List<Class>>(){}.getType());
-        assertTrue(hellos.isEmpty());
+    public void should_return_no_galette() {
+        List<Galette> galettes = new Gson().fromJson(HttpRequest.get(defaultUrl() + "/galette").body(), new TypeToken<List<Class>>(){}.getType());
+        assertTrue(galettes.isEmpty());
     }
 
-    public Long insertHello() {
-        Hello hello = new Hello();
-        hello.setName("name");
+    public Long insertGalette() {
+        Galette galette = new Galette();
+        galette.setName("Galette Saucisse");
+        galette.setPrice(2.5);
         Gson gson = new Gson();
-        assertEquals(201, HttpRequest.post(defaultUrl() + "/hello").send(gson.toJson(hello)).code());
+        assertEquals(201, HttpRequest.post(defaultUrl() + "/galette").send(gson.toJson(galette)).code());
 
-        List<Hello> hellos = gson.fromJson(HttpRequest.get(defaultUrl() + "/hello").body(), new TypeToken<List<Hello>>(){}.getType());
-        assertEquals(1, hellos.size());
-        assertEquals("name", hellos.get(0).getName());
-        return hellos.get(0).getId();
+        List<Galette> galettes = gson.fromJson(HttpRequest.get(defaultUrl() + "/galette").body(), new TypeToken<List<Galette>>(){}.getType());
+        assertEquals(1, galettes.size());
+        assertEquals("Galette Saucisse", galettes.get(0).getName());
+        assertEquals(2.5, galettes.get(0).getPrice(), 0.001);
+        return galettes.get(0).getId();
     }
 
     @Test
     public void should_create_and_get_by_id() {
-        long id = insertHello();
+        long id = insertGalette();
 
-        Hello newHello = new Gson().fromJson(HttpRequest.get(defaultUrl() + "/hello/" + id).body(), Hello.class);
-        assertNotNull(newHello);
-        assertEquals(id, newHello.getId().longValue());
-        assertEquals("name", newHello.getName());
+        Galette newGalette = new Gson().fromJson(HttpRequest.get(defaultUrl() + "/galette/" + id).body(), Galette.class);
+        assertNotNull(newGalette);
+        assertEquals(id, newGalette.getId().longValue());
+        assertEquals("Galette Saucisse", newGalette.getName());
+        assertEquals(2.5, newGalette.getPrice(), 0.001);
     }
 
     @Test
     public void should_update() {
-        long id = insertHello();
+        long id = insertGalette();
         Gson gson = new Gson();
 
-        Hello newHello = new Hello();
-        newHello.setName("newName");
+        Galette newGalette = new Galette();
+        newGalette.setName("Galette Saucisse fromage");
 
-        assertEquals(204, HttpRequest.put(defaultUrl() + "/hello/" + id).send(gson.toJson(newHello)).code());
+        assertEquals(204, HttpRequest.put(defaultUrl() + "/galette/" + id).send(gson.toJson(newGalette)).code());
 
-        List<Hello> hellos = gson.fromJson(HttpRequest.get(defaultUrl() + "/hello").body(), new TypeToken<List<Hello>>(){}.getType());
-        assertEquals(1, hellos.size());
-        assertEquals("newName", hellos.get(0).getName());
+        List<Galette> galettes = gson.fromJson(HttpRequest.get(defaultUrl() + "/galette").body(), new TypeToken<List<Galette>>(){}.getType());
+        assertEquals(1, galettes.size());
+        assertEquals("Galette Saucisse fromage", galettes.get(0).getName());
     }
 
     @Test
     public void should_delete() {
-        long id = insertHello();
+        long id = insertGalette();
         Gson gson = new Gson();
 
-        assertEquals(204, HttpRequest.delete(defaultUrl() + "/hello/" + id).code());
-        List<Hello> hellos = gson.fromJson(HttpRequest.get(defaultUrl() + "/hello").body(), new TypeToken<List<Hello>>(){}.getType());
-        assertTrue(hellos.isEmpty());
+        assertEquals(204, HttpRequest.delete(defaultUrl() + "/galette/" + id).code());
+        List<Galette> galettes = gson.fromJson(HttpRequest.get(defaultUrl() + "/galette").body(), new TypeToken<List<Galette>>(){}.getType());
+        assertTrue(galettes.isEmpty());
     }
 
 }
