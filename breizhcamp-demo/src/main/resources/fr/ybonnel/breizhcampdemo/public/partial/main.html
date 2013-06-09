@@ -1,7 +1,7 @@
 <div class="row">
     <div class="span12 relative">
         <span></span>
-        <a id="addHello" class="btn btn-success right-btn" href="#/new">Add a galette</a>
+        <a id="addGalette" class="btn btn-success right-btn" href="#/new">Add a galette</a>
     </div>
 </div>
 
@@ -12,6 +12,7 @@
             <thead>
             <tr>
                 <th class="name">Name</th>
+                <th class="name">Price</th>
                 <th class="edit"></th>
                 <th class="remove"></th>
             </tr>
@@ -19,6 +20,7 @@
             <tbody>
             <tr ng-repeat="galette in galettes">
                 <td>{{galette.name}}</td>
+                <td>{{galette.price}}</td>
                 <td class="edit"><a href="#/edit/{{galette.id}}" class="icon-edit" role="button"></a></td>
                 <td class="remove">
                     <a href="#delete{{galette.id}}" role="button" data-toggle="modal" class="icon-remove"></a>

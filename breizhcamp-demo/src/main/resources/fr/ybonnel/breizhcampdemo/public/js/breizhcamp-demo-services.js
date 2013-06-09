@@ -2,8 +2,8 @@
 var services = angular.module('breizhcamp-demo-services', ['ngResource']);
 
 
-services.factory('HelloService', function($resource) {
-    return $resource('/hello/:id',
+services.factory('GaletteService', function($resource) {
+    return $resource('/galette/:id',
         {id: "@id"},
         {update: {method:'PUT'}}
     );
