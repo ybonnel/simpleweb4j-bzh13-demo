@@ -7,6 +7,10 @@ angular.module('breizhcamp-demo',
                 templateUrl: 'partial/main.html',
                 controller: MainCtrl
             })
+            .when('/carte', {
+                templateUrl: 'partial/carte.html',
+                controller: MainCtrl
+            })
             .when('/edit/:id', {
                 templateUrl: 'partial/editOrNew.html',
                 controller: EditCtrl
@@ -16,6 +20,6 @@ angular.module('breizhcamp-demo',
                 controller: NewCtrl
             })
             .otherwise({
-                redirectTo: '/main'
+                redirectTo: '/carte'
             })
     }]);

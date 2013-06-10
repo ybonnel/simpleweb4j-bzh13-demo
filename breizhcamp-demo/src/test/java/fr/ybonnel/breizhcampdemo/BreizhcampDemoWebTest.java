@@ -18,6 +18,7 @@ public class BreizhcampDemoWebTest extends SimpleWeb4jTest {
         BreizhcampDemo.startServer(getPort(), false);
         GaletteResource.entities.clear();
         goTo("/");
+        click("#linkAdmin");
     }
 
     @After
