@@ -21,6 +21,8 @@ public class BreizhcampDemo {
         // Declare the route "/hello" for GET method whith no param in request payload.
         resource(new GaletteResource("galette"));
 
+        addFilter(new SecurityFilter());
+
         // Start the server.
         start(waitStop);
     }
